@@ -1,0 +1,29 @@
+/* Logic Summary:
+Array sort karto mhanje duplicates side-by-side yetil.
+Nantar ek ek pair compare karto — jara same asel tar duplicate ahe.
+Ekda duplicate sapdla ki true return karto.
+*/
+
+
+class Solution {
+    public boolean containsDuplicate(int[] nums) 
+    {
+        // pahilyanda array la sort karto - jya mule duplicate values side-by-side yetil
+        Arrays.sort(nums);
+
+        boolean bFlag = false; // flag true honar jara duplicate sapdla tar
+
+        // ith loop chalu kartoy - compare karto ek element ani tyachya pudchya element la
+        for(int iCnt = 0, jCnt = 1; jCnt < nums.length; iCnt++, jCnt++) 
+        {
+            // jara consecutive elements equal astil tar duplicate ahe
+            if(nums[iCnt] == nums[jCnt]) 
+            {
+                bFlag = true; // duplicate sapdla mhanun flag true
+                break;        // ekda sapdla ki loop madhun baher yeto
+            }
+        }
+
+        return bFlag; // jara duplicate sapdla asel tar true, nahi tar false
+    }
+}
