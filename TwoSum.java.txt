@@ -1,0 +1,27 @@
+/*bagh simple logic ahe
+aplya given array cha ek number fixed ghetla pahilya for loop madhun tu every element of array la traverse
+kartoy ani dusra for loop tyache pudchya numbers la traverse kartoy
+
+ani when target is achieved you store those indices in new Array Arr[]
+*/
+class Solution {
+    public int[] twoSum(int[] nums, int target) 
+    {
+        int Arr[]= new int[2];
+        for(int i=0;i<nums.length;i++)
+        {
+            for(int j=i+1;j<nums.length;j++)
+            {
+                if(nums[i]+nums[j]==target)
+                {
+                    Arr[0]=i;
+                    Arr[1]=j;
+                }
+            }
+        }
+
+        return Arr;
+
+        
+    }
+}
