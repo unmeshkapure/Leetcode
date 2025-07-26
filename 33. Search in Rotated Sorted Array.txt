@@ -1,0 +1,48 @@
+class Solution {
+    public int search(int[] nums, int target) {
+        // Step 1: Start ani End initialize karto
+        int iStart = 0;
+        int iEnd = nums.length - 1;
+        int iMid;
+
+        // Step 2: Binary Search loop chalu thevtoy joparyant iStart <= iEnd
+        while (iStart <= iEnd) {
+            // Step 3: Madhla index calculate karto (overflow avoid karun)
+            iMid = iStart + (iEnd - iStart) / 2;
+
+            // Step 4: Jar mid varcha element ha target barobar asel tar direct return karto
+            if (nums[iMid] == target) {
+                return iMid;
+            }
+
+            // Step 5: Baghto ki left side sorted ahe ka
+            if (nums[iMid] >= nums[iStart])
+            {
+                // Step 6: Jar target ha left sorted part madhe asel tar iEnd la update karto
+                if (target >= nums[iStart] && target < nums[iMid]) 
+                {
+                    iEnd = iMid - 1; // Left side la search karto
+                } 
+                else
+                {
+                    iStart = iMid + 1; // Target dusrya side la asel mhanun right la shift karto
+                }
+            }
+            else
+            {
+                // Step 7: Right side sorted asel tar check karto
+                if (target > nums[iMid] && target <= nums[iEnd]) 
+                {
+                    iStart = iMid + 1; // Target right side madhe ahe mhanun tith search karto
+                } 
+                else 
+                {
+                    iEnd = iMid - 1; // Nahi tar left la shift karto
+                }
+            }
+        }
+
+        // Step 8: Loop samplat pan target sapdla nahi, mhanun -1 return karto
+        return -1;
+    }
+}
